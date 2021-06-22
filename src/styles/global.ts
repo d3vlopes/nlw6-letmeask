@@ -6,4 +6,13 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
   }
+
+  body {
+    background: ${({ theme }) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.text};
+  }
+
+  body, input, button, textarea {
+    font: 400 16px 'Roboto', sans-serif;
+  }
 `
