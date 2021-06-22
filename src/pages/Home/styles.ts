@@ -62,7 +62,7 @@ export const Button = styled.button`
   border-radius: 8px;
   font-weight: 500;
   background: #ea4335;
-  color: ${({ theme }) => theme.colors.constrast};
+  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
