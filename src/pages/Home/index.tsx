@@ -6,7 +6,10 @@ import { useAuth } from 'hooks/useAuth'
 import { database } from 'services/firebase'
 
 import { Button } from 'components/Button'
+
 import { Logo } from 'components/Logo'
+
+import { ToggleTheme } from 'components/ToggleTheme'
 
 import illustration from 'assets/img/illustration.svg'
 import googleIcon from 'assets/img/google-icon.svg'
@@ -52,6 +55,7 @@ export const Home = () => {
   return (
     <S.Container>
       <S.Aside>
+        <ToggleTheme />
         <S.Illustration
           src={illustration}
           alt="Ilustração simbolizando perguntas e respostas"
