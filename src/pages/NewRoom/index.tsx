@@ -56,7 +56,7 @@ export const NewRoom = () => {
               onChange={(event) => setNewRoom(event.target.value)}
               value={newRoom}
             />
-            <Button type="submit">Entrar na sala</Button>
+            <Button type="submit">Criar sala</Button>
           </S.Form>
           <p>
             Quer entrar em uma sala existente? <Link to="/">clique aqui</Link>
