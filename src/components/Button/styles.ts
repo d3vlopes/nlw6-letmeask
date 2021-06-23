@@ -2,12 +2,12 @@ import styled, { css } from 'styled-components'
 
 export const Wrapper = styled.button`
   ${({ theme }) => css`
-    margin-top: 64px;
     height: 50px;
     border-radius: 8px;
     font-weight: 500;
     background: ${theme.colors.primary};
     color: ${theme.colors.constrast};
+    padding: 0 32px;
     display: flex;
     justify-content: center;
     align-items: center;
