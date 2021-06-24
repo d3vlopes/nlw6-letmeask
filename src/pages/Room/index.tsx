@@ -8,7 +8,10 @@ import { database } from 'services/firebase'
 
 import { Button } from 'components/Button'
 import { RoomCode } from 'components/RoomCode'
+
 import { Question } from 'components/Question'
+
+import { ToggleTheme } from 'components/ToggleTheme'
 
 import logo from 'assets/img/logo.svg'
 
@@ -71,6 +74,7 @@ export const Room = () => {
   return (
     <S.Container>
       <S.Header>
+        <ToggleTheme />
         <S.Content>
           <Link to="/">
             <S.Logo src={logo} alt="Letmeask" />
