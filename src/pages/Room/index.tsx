@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react'
+import { FormEvent, useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 
 import { useAuth } from 'hooks/useAuth'
@@ -12,6 +12,30 @@ import logo from 'assets/img/logo.svg'
 
 import * as S from './styles'
 
+type FirebaseQuestions = Record<
+  string,
+  {
+    author: {
+      name: string
+      avatar: string
+    }
+    content: string
+    isAnswered: boolean
+    isHighlighted: boolean
+  }
+>
+
+type Questions = {
+  id: string
+  author: {
+    name: string
+    avatar: string
+  }
+  content: string
+  isAnswered: boolean
+  isHighlighted: boolean
+}
+
 type RoomParams = {
   id: string
 }
@@ -21,8 +45,38 @@ export const Room = () => {
   const { user } = useAuth()
 
   const [newQuestion, setNewQuestion] = useState('')
+  const [questions, setQuestions] = useState<Questions[]>([])
+  const [title, setTitle] = useState('')
 
   const roomId = params.id
+
+  useEffect(() => {
+    const roomRef = database.ref(`rooms/${roomId}`)
+
+    roomRef.on('value', (room) => {
+      const databaseRoom = room.val()
+      const firebaseQuestions: FirebaseQuestions = databaseRoom.questions ?? {}
+
+      // console.log(firebaseQuestions)
+
+      const parsedQuestions = Object.entries(firebaseQuestions).map(
+        ([key, value]) => {
+          return {
+            id: key,
+            content: value.content,
+            author: value.author,
+            isHighlighted: value.isHighlighted,
+            isAnswered: value.isAnswered,
+          }
+        },
+      )
+
+      // console.log(parsedQuestions)
+
+      setTitle(databaseRoom.title)
+      setQuestions(parsedQuestions)
+    })
+  }, [roomId])
 
   async function handleSendQuestion(event: FormEvent) {
     if (newQuestion.trim() === '') {
@@ -61,8 +115,10 @@ export const Room = () => {
 
       <S.Main>
         <S.RoomTitle>
-          <S.Heading>Sala React</S.Heading>
-          <S.Questions>4 perguntas</S.Questions>
+          <S.Heading>Sala {title}</S.Heading>
+          {questions.length > 0 && (
+            <S.Questions>{questions.length} pergunta(s)</S.Questions>
+          )}
         </S.RoomTitle>
 
         <S.Form onSubmit={handleSendQuestion}>
@@ -88,6 +144,8 @@ export const Room = () => {
             </Button>
           </S.FormFooter>
         </S.Form>
+
+        {JSON.stringify(questions)}
       </S.Main>
     </S.Container>
   )
