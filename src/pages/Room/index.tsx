@@ -7,6 +7,7 @@ import { database } from 'services/firebase'
 
 import { Button } from 'components/Button'
 import { RoomCode } from 'components/RoomCode'
+import { Question } from 'components/Question'
 
 import logo from 'assets/img/logo.svg'
 
@@ -79,6 +80,8 @@ export const Room = () => {
   }, [roomId])
 
   async function handleSendQuestion(event: FormEvent) {
+    event.preventDefault()
+
     if (newQuestion.trim() === '') {
       return
     }
@@ -145,7 +148,17 @@ export const Room = () => {
           </S.FormFooter>
         </S.Form>
 
-        {JSON.stringify(questions)}
+        <S.QuestionList>
+          {questions.map((question) => {
+            return (
+              <Question
+                key={question.id}
+                content={question.content}
+                author={question.author}
+              />
+            )
+          })}
+        </S.QuestionList>
       </S.Main>
     </S.Container>
   )

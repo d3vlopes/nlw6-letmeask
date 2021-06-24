@@ -101,3 +101,7 @@ export const Name = styled.span`
     font-size: 14px;
   `}
 `
+
+export const QuestionList = styled.div`
+  margin: 32px 0;
+`
