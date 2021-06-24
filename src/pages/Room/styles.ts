@@ -3,8 +3,11 @@ import styled, { css } from 'styled-components'
 export const Container = styled.div``
 
 export const Header = styled.header`
-  padding: 24px;
-  border-bottom: 1px solid #e2e2e2;
+  ${({ theme }) => css`
+    padding: 24px;
+    border-bottom: 1px solid #${theme.colors.borderBottom};
+    background: ${theme.colors.backgroundLight};
+  `}
 `
 
 export const Content = styled.div`
@@ -13,6 +16,7 @@ export const Content = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-top: 80px;
 `
 
 export const Logo = styled.img`

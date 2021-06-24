@@ -1,7 +1,5 @@
 import styled, { css } from 'styled-components'
 
-const localTheme = localStorage.getItem('theme')
-
 export const Wrapper = styled.div`
   position: fixed;
   top: 2rem;
@@ -27,9 +25,7 @@ export const Input = styled.input`
     height: 0;
 
     &:checked + ${Slider} {
-      background: ${localTheme === 'default'
-        ? theme.colors.primary
-        : theme.colors.constrast};
+      background: ${theme.colors.constrast};
     }
 
     &:checked + ${Slider}:before {

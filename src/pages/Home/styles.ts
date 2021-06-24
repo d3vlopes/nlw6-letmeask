@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
@@ -104,20 +104,23 @@ export const Divider = styled.div`
 `
 
 export const Form = styled.form`
-  input {
-    height: 50px;
-    border-radius: 8px;
-    padding: 0 16px;
-    background: ${({ theme }) => theme.colors.constrast};
-    border: 1px solid ${({ theme }) => theme.colors.border};
-  }
+  ${({ theme }) => css`
+    input {
+      height: 50px;
+      border-radius: 8px;
+      padding: 0 16px;
+      background: ${({ theme }) => theme.colors.constrast};
+      border: 1px solid ${({ theme }) => theme.colors.border};
+      color: ${theme.colors.text};
+    }
 
-  button {
-    margin-top: 16px;
-  }
+    button {
+      margin-top: 16px;
+    }
 
-  button,
-  input {
-    width: 100%;
-  }
+    button,
+    input {
+      width: 100%;
+    }
+  `}
 `
