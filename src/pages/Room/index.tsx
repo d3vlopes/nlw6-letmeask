@@ -74,12 +74,14 @@ export const Room = () => {
   return (
     <S.Container>
       <S.Header>
-        <ToggleTheme />
         <S.Content>
           <Link to="/">
             <S.Logo src={logo} alt="Letmeask" />
           </Link>
-          <RoomCode code={params.id} />
+          <div>
+            <RoomCode code={params.id} />
+            <ToggleTheme />
+          </div>
         </S.Content>
       </S.Header>
 

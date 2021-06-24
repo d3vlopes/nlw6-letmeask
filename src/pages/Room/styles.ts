@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { Wrapper as ToggleStyles } from 'components/ToggleTheme/styles'
 
 export const Container = styled.div``
 
@@ -16,7 +17,16 @@ export const Content = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 80px;
+
+  > div {
+    display: flex;
+  }
+
+  ${ToggleStyles} {
+    position: relative;
+    top: 0;
+    right: -5rem;
+  }
 `
 
 export const Logo = styled.img`
