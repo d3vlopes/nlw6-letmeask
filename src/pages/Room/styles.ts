@@ -65,7 +65,7 @@ export const FormFooter = styled.div`
   align-items: center;
   margin-top: 16px;
 
-  span {
+  > span {
     font-size: 14px;
     color: #737380;
     font-weight: 500;
@@ -80,4 +80,24 @@ export const FormFooter = styled.div`
       cursor: pointer;
     }
   }
+`
+
+export const UserInfo = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+export const Avatar = styled.img`
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+`
+
+export const Name = styled.span`
+  ${({ theme }) => css`
+    margin-left: 8px;
+    color: ${theme.colors.text};
+    font-weight: 500;
+    font-size: 14px;
+  `}
 `
