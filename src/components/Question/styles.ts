@@ -10,6 +10,12 @@ export const Wrapper = styled.div`
     & + div {
       margin-top: 8px;
     }
+
+    button {
+      border: 0;
+      background-color: transparent;
+      cursor: pointer;
+    }
   `}
 `
 

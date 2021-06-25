@@ -6,9 +6,10 @@ export type QuestionProps = {
     name: string
     avatar: string
   }
+  children?: React.ReactNode
 }
 
-export const Question = ({ content, author }: QuestionProps) => {
+export const Question = ({ content, author, children }: QuestionProps) => {
   return (
     <S.Wrapper>
       <S.Content>{content}</S.Content>
@@ -17,7 +18,7 @@ export const Question = ({ content, author }: QuestionProps) => {
           <S.Avatar src={author.avatar} alt={author.name} />
           <S.Name>{author.name}</S.Name>
         </S.UserInfo>
-        <div></div>
+        <div>{children}</div>
       </S.Footer>
     </S.Wrapper>
   )
