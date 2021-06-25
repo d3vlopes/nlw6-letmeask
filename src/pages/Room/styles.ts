@@ -105,3 +105,25 @@ export const Name = styled.span`
 export const QuestionList = styled.div`
   margin: 32px 0;
 `
+
+export const LikeButton = styled.button`
+  display: flex;
+  align-items: flex-end;
+  color: #737380;
+  gap: 8px;
+  transition: filter 0.2s;
+
+  &.liked {
+    color: ${({ theme }) => theme.colors.primary};
+  }
+
+  &.liked svg path {
+    stroke: ${({ theme }) => theme.colors.primary};
+  }
+
+  &:hover {
+    filter: brightness(0.7);
+  }
+`
+
+export const Likes = styled.span``
