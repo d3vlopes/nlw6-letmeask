@@ -6,9 +6,9 @@ import { useAuth } from 'hooks/useAuth'
 import { database } from 'services/firebase'
 
 import { Button } from 'components/Button'
+import { Logo } from 'components/Logo'
 
 import illustration from 'assets/img/illustration.svg'
-import logo from 'assets/img/logo.svg'
 import googleIcon from 'assets/img/google-icon.svg'
 
 import * as S from './styles'
@@ -62,7 +62,7 @@ export const Home = () => {
 
       <main>
         <S.Wrapper>
-          <S.Logo src={logo} alt="Letmeask" />
+          <Logo />
           <S.Button onClick={handleCreateRoom}>
             <img src={googleIcon} alt="Logo da Google" />
             Crie sua sala com o Google
