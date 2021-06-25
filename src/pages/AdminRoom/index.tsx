@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useHistory } from 'react-router-dom'
 
 // import { useAuth } from 'hooks/useAuth'
 import { useRoom } from 'hooks/useRoom'
@@ -24,6 +24,15 @@ export const AdminRoom = () => {
 
   // const { user } = useAuth()
   const { questions, title } = useRoom(roomId)
+  const history = useHistory()
+
+  async function handleEndRoom() {
+    await database.ref(`rooms/${roomId}`).update({
+      endedAt: new Date(),
+    })
+
+    history.push('/')
+  }
 
   async function handleDeleteQuestion(questionId: string) {
     if (window.confirm('Tem certeza que você deseja excluir esta pergunta?')) {
@@ -40,7 +49,9 @@ export const AdminRoom = () => {
           </Link>
           <div>
             <RoomCode code={params.id} />
-            <Button isOutlined>Encerrar sala</Button>
+            <Button isOutlined onClick={handleEndRoom}>
+              Encerrar sala
+            </Button>
           </div>
         </S.Content>
       </S.Header>
