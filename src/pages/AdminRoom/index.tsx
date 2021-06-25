@@ -40,6 +40,11 @@ export const AdminRoom = () => {
     }
   }
 
+  async function handleCheckQuestionAsAnswerd(questionId: string) {
+    await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+      isAnswered: true,
+    })
+  }
   return (
     <S.Container>
       <S.Header>
@@ -71,7 +76,23 @@ export const AdminRoom = () => {
                 key={question.id}
                 content={question.content}
                 author={question.author}
+                isAnswered={question.isAnswered}
+                isHighlighted={question.isHighlighted}
               >
+                {!question.isAnswered && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={() => handleCheckQuestionAsAnswerd(question.id)}
+                    >
+                      <img
+                        src={checkIcon}
+                        alt="Marcar pergunta como respondida"
+                        title="Marcar pergunta como respondida"
+                      />
+                    </button>
+                  </>
+                )}
                 <button
                   type="button"
                   onClick={() => handleDeleteQuestion(question.id)}
