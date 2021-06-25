@@ -1,11 +1,16 @@
 import styled, { css } from 'styled-components'
+import { QuestionProps } from '.'
 
-export const Wrapper = styled.div`
-  ${({ theme }) => css`
-    background: #fefefe;
+type WrapperProps = Pick<QuestionProps, 'isAnswered' | 'isHighlighted'>
+
+export const Wrapper = styled.div<WrapperProps>`
+  ${({ theme, isAnswered, isHighlighted }) => css`
+    background: ${isHighlighted ? '#f4f0ff' : '#fefefe'};
     border-radius: 8px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
     padding: 24px;
+    border: ${isHighlighted ? `1px solid ${theme.colors.primary}` : ''};
+    background: ${isAnswered ? '#dbdcdd' : ''};
 
     & + div {
       margin-top: 8px;
@@ -15,6 +20,15 @@ export const Wrapper = styled.div`
       border: 0;
       background-color: transparent;
       cursor: pointer;
+    }
+
+    div {
+      display: flex;
+      gap: 16px;
+    }
+
+    ${Name} {
+      color: ${isHighlighted ? theme.colors.text : ''};
     }
   `}
 `
