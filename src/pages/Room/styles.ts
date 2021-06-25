@@ -6,7 +6,7 @@ export const Container = styled.div``
 export const Header = styled.header`
   ${({ theme }) => css`
     padding: 24px;
-    border-bottom: 1px solid #${theme.colors.borderBottom};
+    border-bottom: 1px solid ${theme.colors.borderBottom};
     background: ${theme.colors.backgroundLight};
   `}
 `
@@ -25,7 +25,7 @@ export const Content = styled.div`
   ${ToggleStyles} {
     position: relative;
     top: 0;
-    right: -5rem;
+    right: -3rem;
   }
 `
 

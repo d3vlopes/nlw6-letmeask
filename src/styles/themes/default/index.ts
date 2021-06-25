@@ -9,5 +9,6 @@ export const theme = {
     borderBottom: '#e2e2e2',
     primary: '#835afd',
     link: '#e559f9',
+    card: '#fefefe',
   },
 }

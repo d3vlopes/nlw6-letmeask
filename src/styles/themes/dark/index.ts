@@ -9,5 +9,6 @@ export const dark = {
     borderBottom: '#464646',
     primary: '#835afd',
     link: '#e559f9',
+    card: '#17191b',
   },
 }
