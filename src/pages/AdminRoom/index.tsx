@@ -10,7 +10,10 @@ import { RoomCode } from 'components/RoomCode'
 import { Question } from 'components/Question'
 
 import logo from 'assets/img/logo.svg'
+
 import deleteIcon from 'assets/img/delete.svg'
+import checkIcon from 'assets/img/check.svg'
+import answerIcon from 'assets/img/answer.svg'
 
 import * as S from './styles'
 
@@ -45,6 +48,13 @@ export const AdminRoom = () => {
       isAnswered: true,
     })
   }
+
+  async function handleHighlightQuestion(questionId: string) {
+    await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+      isHighlighted: true,
+    })
+  }
+
   return (
     <S.Container>
       <S.Header>
@@ -89,6 +99,16 @@ export const AdminRoom = () => {
                         src={checkIcon}
                         alt="Marcar pergunta como respondida"
                         title="Marcar pergunta como respondida"
+                      />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleHighlightQuestion(question.id)}
+                    >
+                      <img
+                        src={answerIcon}
+                        alt="Destacar pergunta"
+                        title="Destacar pergunta"
                       />
                     </button>
                   </>
