@@ -10,6 +10,7 @@ import { RoomCode } from 'components/RoomCode'
 import { Question } from 'components/Question'
 
 import logo from 'assets/img/logo.svg'
+import deleteIcon from 'assets/img/delete.svg'
 
 import * as S from './styles'
 
@@ -23,6 +24,12 @@ export const AdminRoom = () => {
 
   // const { user } = useAuth()
   const { questions, title } = useRoom(roomId)
+
+  async function handleDeleteQuestion(questionId: string) {
+    if (window.confirm('Tem certeza que você deseja excluir esta pergunta?')) {
+      await database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
+    }
+  }
 
   return (
     <S.Container>
@@ -53,7 +60,18 @@ export const AdminRoom = () => {
                 key={question.id}
                 content={question.content}
                 author={question.author}
-              />
+              >
+                <button
+                  type="button"
+                  onClick={() => handleDeleteQuestion(question.id)}
+                >
+                  <img
+                    src={deleteIcon}
+                    alt="Remover pergunta"
+                    title="Remover pergunta"
+                  />
+                </button>
+              </Question>
             )
           })}
         </S.QuestionList>
