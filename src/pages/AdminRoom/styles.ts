@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { Wrapper as ToggleStyles } from 'components/ToggleTheme/styles'
 
 export const Container = styled.div``
 
@@ -17,6 +18,12 @@ export const Content = styled.div`
   > div {
     display: flex;
     gap: 16px;
+
+    ${ToggleStyles} {
+      position: relative;
+      top: 0;
+      right: -3rem;
+    }
 
     button {
       height: 40px;

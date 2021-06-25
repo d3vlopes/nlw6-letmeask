@@ -8,6 +8,7 @@ import { database } from 'services/firebase'
 import { Button } from 'components/Button'
 import { RoomCode } from 'components/RoomCode'
 import { Question } from 'components/Question'
+import { ToggleTheme } from 'components/ToggleTheme'
 
 import logo from 'assets/img/logo.svg'
 
@@ -67,6 +68,7 @@ export const AdminRoom = () => {
             <Button isOutlined onClick={handleEndRoom}>
               Encerrar sala
             </Button>
+            <ToggleTheme />
           </div>
         </S.Content>
       </S.Header>
