@@ -38,9 +38,7 @@ export const Avatar = styled.img`
 `
 
 export const Name = styled.span`
-  ${({ theme }) => css`
-    margin-left: 8px;
-    color: #737380;
-    font-size: 14px;
-  `}
+  margin-left: 8px;
+  color: #737380;
+  font-size: 14px;
 `

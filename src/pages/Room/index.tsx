@@ -1,7 +1,8 @@
-import { FormEvent, useState, useEffect } from 'react'
+import { FormEvent, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 
 import { useAuth } from 'hooks/useAuth'
+import { useRoom } from 'hooks/useRoom'
 
 import { database } from 'services/firebase'
 
@@ -13,71 +14,18 @@ import logo from 'assets/img/logo.svg'
 
 import * as S from './styles'
 
-type FirebaseQuestions = Record<
-  string,
-  {
-    author: {
-      name: string
-      avatar: string
-    }
-    content: string
-    isAnswered: boolean
-    isHighlighted: boolean
-  }
->
-
-type Questions = {
-  id: string
-  author: {
-    name: string
-    avatar: string
-  }
-  content: string
-  isAnswered: boolean
-  isHighlighted: boolean
-}
-
 type RoomParams = {
   id: string
 }
 
 export const Room = () => {
   const params = useParams<RoomParams>()
-  const { user } = useAuth()
-
-  const [newQuestion, setNewQuestion] = useState('')
-  const [questions, setQuestions] = useState<Questions[]>([])
-  const [title, setTitle] = useState('')
-
   const roomId = params.id
 
-  useEffect(() => {
-    const roomRef = database.ref(`rooms/${roomId}`)
+  const { user } = useAuth()
+  const { questions, title } = useRoom(roomId)
 
-    roomRef.on('value', (room) => {
-      const databaseRoom = room.val()
-      const firebaseQuestions: FirebaseQuestions = databaseRoom.questions ?? {}
-
-      // console.log(firebaseQuestions)
-
-      const parsedQuestions = Object.entries(firebaseQuestions).map(
-        ([key, value]) => {
-          return {
-            id: key,
-            content: value.content,
-            author: value.author,
-            isHighlighted: value.isHighlighted,
-            isAnswered: value.isAnswered,
-          }
-        },
-      )
-
-      // console.log(parsedQuestions)
-
-      setTitle(databaseRoom.title)
-      setQuestions(parsedQuestions)
-    })
-  }, [roomId])
+  const [newQuestion, setNewQuestion] = useState('')
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault()
