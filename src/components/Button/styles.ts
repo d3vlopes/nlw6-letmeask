@@ -1,18 +1,19 @@
 import styled, { css } from 'styled-components'
+import { ButtonProps } from '.'
 
-export const Wrapper = styled.button`
-  ${({ theme }) => css`
+export const Wrapper = styled.button<ButtonProps>`
+  ${({ theme, isOutlined }) => css`
     height: 50px;
     border-radius: 8px;
     font-weight: 500;
-    background: ${theme.colors.primary};
-    color: ${theme.colors.constrast};
+    background: ${isOutlined ? theme.colors.constrast : theme.colors.primary};
+    color: ${isOutlined ? theme.colors.primary : theme.colors.constrast};
     padding: 0 32px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    border: 0;
+    border: ${isOutlined ? `1px solid ${theme.colors.primary}` : 0};
     transition: filter 0.2s;
 
     img {
