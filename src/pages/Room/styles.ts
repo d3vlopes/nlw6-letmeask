@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components'
 import { Wrapper as ToggleStyles } from 'components/ToggleTheme/styles'
+import { Wrapper as LogoStyles } from 'components/Logo/styles'
 
 export const Container = styled.div``
 
@@ -27,10 +28,10 @@ export const Content = styled.div`
     top: 0;
     right: -3rem;
   }
-`
 
-export const Logo = styled.img`
-  max-height: 45px;
+  ${LogoStyles} > svg {
+    max-height: 45px;
+  }
 `
 
 export const Main = styled.main`

@@ -8,12 +8,9 @@ import { database } from 'services/firebase'
 
 import { Button } from 'components/Button'
 import { RoomCode } from 'components/RoomCode'
-
 import { Question } from 'components/Question'
-
 import { ToggleTheme } from 'components/ToggleTheme'
-
-import logo from 'assets/img/logo.svg'
+import { Logo } from 'components/Logo'
 
 import * as S from './styles'
 
@@ -76,7 +73,7 @@ export const Room = () => {
       <S.Header>
         <S.Content>
           <Link to="/">
-            <S.Logo src={logo} alt="Letmeask" />
+            <Logo />
           </Link>
           <div>
             <RoomCode code={params.id} />

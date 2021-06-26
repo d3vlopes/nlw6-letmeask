@@ -5,9 +5,10 @@ import { database } from 'services/firebase'
 import { useAuth } from 'hooks/useAuth'
 
 import { Button } from 'components/Button'
+import { Logo } from 'components/Logo'
+import { ToggleTheme } from 'components/ToggleTheme'
 
 import illustration from 'assets/img/illustration.svg'
-import logo from 'assets/img/logo.svg'
 
 import * as S from './styles'
 
@@ -37,6 +38,7 @@ export const NewRoom = () => {
   return (
     <S.Container>
       <S.Aside>
+        <ToggleTheme />
         <S.Illustration
           src={illustration}
           alt="Ilustração simbolizando perguntas e respostas"
@@ -47,7 +49,9 @@ export const NewRoom = () => {
 
       <main>
         <S.Wrapper>
-          <S.Logo src={logo} alt="Letmeask" />
+          <Link to="/">
+            <Logo />
+          </Link>
           <S.Heading>Cria uma nova sala</S.Heading>
           <S.Form onSubmit={handleCreateRoom}>
             <input

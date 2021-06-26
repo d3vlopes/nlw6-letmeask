@@ -1,11 +1,15 @@
 import styled, { css } from 'styled-components'
 import { Wrapper as ToggleStyles } from 'components/ToggleTheme/styles'
+import { Wrapper as LogoStyles } from 'components/Logo/styles'
 
 export const Container = styled.div``
 
 export const Header = styled.header`
-  padding: 24px;
-  border-bottom: 1px solid #e2e2e2;
+  ${({ theme }) => css`
+    padding: 24px;
+    border-bottom: 1px solid ${theme.colors.borderBottom};
+    background: ${theme.colors.backgroundLight};
+  `}
 `
 
 export const Content = styled.div`
@@ -29,10 +33,10 @@ export const Content = styled.div`
       height: 40px;
     }
   }
-`
 
-export const Logo = styled.img`
-  max-height: 45px;
+  ${LogoStyles} > svg {
+    max-height: 45px;
+  }
 `
 
 export const Main = styled.main`
