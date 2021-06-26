@@ -109,9 +109,8 @@ export const Form = styled.form`
       height: 50px;
       border-radius: 8px;
       padding: 0 16px;
-      background: ${({ theme }) => theme.colors.constrast};
-      border: 1px solid ${({ theme }) => theme.colors.border};
-      color: ${theme.colors.text};
+      background: ${theme.colors.constrast};
+      border: 1px solid ${theme.colors.border};
     }
 
     button {

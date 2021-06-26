@@ -15,4 +15,8 @@ export const GlobalStyles = createGlobalStyle`
   body, input, button, textarea {
     font: 400 16px 'Roboto', sans-serif;
   }
+
+  input {
+    color: ${({ theme }) => theme.colors.text};
+  }
 `
