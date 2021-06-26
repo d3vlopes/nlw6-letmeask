@@ -1,5 +1,7 @@
 import { useRoom } from 'hooks/useRoom'
 
+import { Loading } from 'components/Loading'
+
 import * as S from './styles'
 
 type RoomTitleProps = {
@@ -11,7 +13,11 @@ export const RoomTitle = ({ roomId }: RoomTitleProps) => {
 
   return (
     <S.Wrapper>
-      <S.Heading>Sala {title}</S.Heading>
+      {!title ? (
+        <Loading color="primary" />
+      ) : (
+        <S.Heading>Sala {title}</S.Heading>
+      )}
       {questions.length > 0 && (
         <S.Questions>{questions.length} pergunta(s)</S.Questions>
       )}
