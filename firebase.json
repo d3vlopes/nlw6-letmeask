@@ -4,6 +4,7 @@
   },
   "hosting": {
     "public": "build",
+    "site": "letmeask-nlw-781b6",
     "ignore": [
       "firebase.json",
       "**/.*",
