@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
@@ -78,7 +78,7 @@ export const Button = styled.button`
   border-radius: 8px;
   font-weight: 500;
   background: #ea4335;
-  color: ${({ theme }) => theme.colors.constrast};
+  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -95,21 +95,47 @@ export const Button = styled.button`
   }
 `
 
+export const Divider = styled.div`
+  font-size: 14px;
+  color: ${({ theme }) => theme.colors.border};
+  margin: 32px 0;
+  display: flex;
+  align-items: center;
+
+  &::before {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: ${({ theme }) => theme.colors.border};
+    margin-right: 16px;
+  }
+
+  &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: ${({ theme }) => theme.colors.border};
+    margin-left: 16px;
+  }
+`
+
 export const Form = styled.form`
-  input {
-    height: 50px;
-    border-radius: 8px;
-    padding: 0 16px;
-    background: ${({ theme }) => theme.colors.constrast};
-    border: 1px solid ${({ theme }) => theme.colors.border};
-  }
+  ${({ theme }) => css`
+    input {
+      height: 50px;
+      border-radius: 8px;
+      padding: 0 16px;
+      background: ${theme.colors.constrast};
+      border: 1px solid ${theme.colors.border};
+    }
 
-  button {
-    margin-top: 16px;
-  }
+    button {
+      margin-top: 16px;
+    }
 
-  button,
-  input {
-    width: 100%;
-  }
+    button,
+    input {
+      width: 100%;
+    }
+  `}
 `
