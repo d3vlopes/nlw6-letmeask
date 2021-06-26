@@ -1,8 +1,23 @@
 import styled, { css } from 'styled-components'
 import { Wrapper as ToggleStyles } from 'components/ToggleTheme/styles'
 import { Wrapper as LogoStyles } from 'components/Logo/styles'
+import Skeleton from 'react-loading-skeleton'
 
 export const Container = styled.div``
+
+export const SkeletonCustom = styled(Skeleton)`
+  ${({ theme }) => css`
+    &.react-loading-skeleton {
+      background-color: ${theme.colors.skeletonBackground};
+      background-image: linear-gradient(
+        90deg,
+        ${theme.colors.skeletonBackground},
+        ${theme.colors.skeleton},
+        ${theme.colors.skeletonBackground}
+      );
+    }
+  `}
+`
 
 export const Header = styled.header`
   ${({ theme }) => css`

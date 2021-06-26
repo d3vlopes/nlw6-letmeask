@@ -11,5 +11,7 @@ export const dark = {
     link: '#e559f9',
     card: '#17191b',
     content: '#29292e',
+    skeletonBackground: '#444',
+    skeleton: '#17191b',
   },
 }

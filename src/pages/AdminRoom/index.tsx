@@ -1,13 +1,12 @@
-import { useParams, Link, useHistory } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 // import { useAuth } from 'hooks/useAuth'
 import { useRoom } from 'hooks/useRoom'
 
 import { database } from 'services/firebase'
 
-import { Button } from 'components/Button'
-import { RoomCode } from 'components/RoomCode'
 import { Question } from 'components/Question'
+
 import { Header } from 'components/Header'
 import { RoomTitle } from 'components/RoomTitle'
 
@@ -54,52 +53,62 @@ export const AdminRoom = () => {
         <RoomTitle roomId={roomId} />
 
         <S.QuestionList>
-          {questions.map((question) => {
-            return (
-              <Question
-                key={question.id}
-                content={question.content}
-                author={question.author}
-                isAnswered={question.isAnswered}
-                isHighlighted={question.isHighlighted}
-              >
-                {!question.isAnswered && (
-                  <>
-                    <button
-                      type="button"
-                      onClick={() => handleCheckQuestionAsAnswerd(question.id)}
-                    >
-                      <img
-                        src={checkIcon}
-                        alt="Marcar pergunta como respondida"
-                        title="Marcar pergunta como respondida"
-                      />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => handleHighlightQuestion(question.id)}
-                    >
-                      <img
-                        src={answerIcon}
-                        alt="Destacar pergunta"
-                        title="Destacar pergunta"
-                      />
-                    </button>
-                  </>
-                )}
-                <button
-                  type="button"
-                  onClick={() => handleDeleteQuestion(question.id)}
+          {!questions.length ? (
+            <S.SkeletonCustom
+              height={30}
+              count={5}
+              style={{ margin: '8px 0' }}
+            />
+          ) : (
+            questions.map((question) => {
+              return (
+                <Question
+                  key={question.id}
+                  content={question.content}
+                  author={question.author}
+                  isAnswered={question.isAnswered}
+                  isHighlighted={question.isHighlighted}
                 >
-                  <img
-                    src={deleteIcon}
-                    alt="Remover pergunta"
-                    title="Remover pergunta"
-                  />
-                </button>
-              </Question>
-            )
-          })}
+                  {!question.isAnswered && (
+                    <>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          handleCheckQuestionAsAnswerd(question.id)
+                        }
+                      >
+                        <img
+                          src={checkIcon}
+                          alt="Marcar pergunta como respondida"
+                          title="Marcar pergunta como respondida"
+                        />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => handleHighlightQuestion(question.id)}
+                      >
+                        <img
+                          src={answerIcon}
+                          alt="Destacar pergunta"
+                          title="Destacar pergunta"
+                        />
+                      </button>
+                    </>
+                  )}
+                  <button
+                    type="button"
+                    onClick={() => handleDeleteQuestion(question.id)}
+                  >
+                    <img
+                      src={deleteIcon}
+                      alt="Remover pergunta"
+                      title="Remover pergunta"
+                    />
+                  </button>
+                </Question>
+              )
+            })
+          )}
         </S.QuestionList>
       </S.Main>
     </S.Container>

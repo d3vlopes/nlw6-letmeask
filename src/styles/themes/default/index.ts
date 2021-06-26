@@ -11,5 +11,7 @@ export const theme = {
     link: '#e559f9',
     card: '#fefefe',
     content: '#29292e',
+    skeletonBackground: '#eee',
+    skeleton: '#f5f5f5',
   },
 }
