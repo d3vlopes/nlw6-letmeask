@@ -8,8 +8,8 @@ import { database } from 'services/firebase'
 import { Button } from 'components/Button'
 import { RoomCode } from 'components/RoomCode'
 import { Question } from 'components/Question'
-import { ToggleTheme } from 'components/ToggleTheme'
-import { Logo } from 'components/Logo'
+import { Header } from 'components/Header'
+import { RoomTitle } from 'components/RoomTitle'
 
 import deleteIcon from 'assets/img/delete.svg'
 import checkIcon from 'assets/img/check.svg'
@@ -26,16 +26,7 @@ export const AdminRoom = () => {
   const roomId = params.id
 
   // const { user } = useAuth()
-  const { questions, title } = useRoom(roomId)
-  const history = useHistory()
-
-  async function handleEndRoom() {
-    await database.ref(`rooms/${roomId}`).update({
-      endedAt: new Date(),
-    })
-
-    history.push('/')
-  }
+  const { questions } = useRoom(roomId)
 
   async function handleDeleteQuestion(questionId: string) {
     if (window.confirm('Tem certeza que você deseja excluir esta pergunta?')) {
@@ -57,28 +48,10 @@ export const AdminRoom = () => {
 
   return (
     <S.Container>
-      <S.Header>
-        <S.Content>
-          <Link to="/">
-            <Logo />
-          </Link>
-          <div>
-            <RoomCode code={params.id} />
-            <Button isOutlined onClick={handleEndRoom}>
-              Encerrar sala
-            </Button>
-            <ToggleTheme />
-          </div>
-        </S.Content>
-      </S.Header>
+      <Header admin roomId={roomId} />
 
       <S.Main>
-        <S.RoomTitle>
-          <S.Heading>Sala {title}</S.Heading>
-          {questions.length > 0 && (
-            <S.Questions>{questions.length} pergunta(s)</S.Questions>
-          )}
-        </S.RoomTitle>
+        <RoomTitle roomId={roomId} />
 
         <S.QuestionList>
           {questions.map((question) => {
