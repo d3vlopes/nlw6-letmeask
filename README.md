@@ -8,6 +8,12 @@
   Let Me Ask é uma projeto que foi criado durante o NLW Together da <a href="https://rocketseat.com.br/" target="_blank">Rocketseat</a> com o objetivo de ajudar streamers, onde é possivel reunir as perguntas de seus espectadores durante a trasmissão e feito uma votção para escolher as perguntas que serão respondidas.
 </h4>
 
+<div align="center">
+  <a href="https://letmeask-nlw-781b6.firebaseapp.com/">Demostração</a>
+</div>
+
+<br />
+
 ![Let Me Ask preview](.github/preview.png)
 
 ## Tecnologias
