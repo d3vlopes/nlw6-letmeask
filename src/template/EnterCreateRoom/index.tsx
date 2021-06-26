@@ -1,5 +1,6 @@
 import { FormEvent, useState } from 'react'
 import { useHistory, Link } from 'react-router-dom'
+import toast, { Toaster } from 'react-hot-toast'
 
 import { useAuth } from 'hooks/useAuth'
 
@@ -43,12 +44,24 @@ export const EnterCreateRoom = ({ page }: EnterCreateRoomProps) => {
     const roomRef = await database.ref(`rooms/${roomCode}`).get()
 
     if (!roomRef.exists()) {
-      alert('Room does not exists.')
+      toast.error('Room does not exists.', {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      })
       return
     }
 
     if (roomRef.val().endedAt) {
-      alert('Room already closed.')
+      toast.error('Room already closed.', {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      })
       return
     }
 
@@ -74,6 +87,7 @@ export const EnterCreateRoom = ({ page }: EnterCreateRoomProps) => {
 
   return (
     <S.Container>
+      <Toaster />
       <S.Aside>
         <ToggleTheme />
         <S.Illustration
