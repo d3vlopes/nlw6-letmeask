@@ -50,62 +50,52 @@ export const AdminRoom = () => {
         <RoomTitle roomId={roomId} />
 
         <S.QuestionList>
-          {!questions.length ? (
-            <S.SkeletonCustom
-              height={30}
-              count={5}
-              style={{ margin: '8px 0' }}
-            />
-          ) : (
-            questions.map((question) => {
-              return (
-                <Question
-                  key={question.id}
-                  content={question.content}
-                  author={question.author}
-                  isAnswered={question.isAnswered}
-                  isHighlighted={question.isHighlighted}
+          {questions.map((question) => {
+            return (
+              <Question
+                key={question.id}
+                content={question.content}
+                author={question.author}
+                isAnswered={question.isAnswered}
+                isHighlighted={question.isHighlighted}
+              >
+                {!question.isAnswered && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={() => handleCheckQuestionAsAnswerd(question.id)}
+                    >
+                      <img
+                        src={checkIcon}
+                        alt="Marcar pergunta como respondida"
+                        title="Marcar pergunta como respondida"
+                      />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleHighlightQuestion(question.id)}
+                    >
+                      <img
+                        src={answerIcon}
+                        alt="Destacar pergunta"
+                        title="Destacar pergunta"
+                      />
+                    </button>
+                  </>
+                )}
+                <button
+                  type="button"
+                  onClick={() => handleDeleteQuestion(question.id)}
                 >
-                  {!question.isAnswered && (
-                    <>
-                      <button
-                        type="button"
-                        onClick={() =>
-                          handleCheckQuestionAsAnswerd(question.id)
-                        }
-                      >
-                        <img
-                          src={checkIcon}
-                          alt="Marcar pergunta como respondida"
-                          title="Marcar pergunta como respondida"
-                        />
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => handleHighlightQuestion(question.id)}
-                      >
-                        <img
-                          src={answerIcon}
-                          alt="Destacar pergunta"
-                          title="Destacar pergunta"
-                        />
-                      </button>
-                    </>
-                  )}
-                  <button
-                    type="button"
-                    onClick={() => handleDeleteQuestion(question.id)}
-                  >
-                    <img
-                      src={deleteIcon}
-                      alt="Remover pergunta"
-                      title="Remover pergunta"
-                    />
-                  </button>
-                </Question>
-              )
-            })
-          )}
+                  <img
+                    src={deleteIcon}
+                    alt="Remover pergunta"
+                    title="Remover pergunta"
+                  />
+                </button>
+              </Question>
+            )
+          })}
         </S.QuestionList>
       </S.Main>
     </S.Container>

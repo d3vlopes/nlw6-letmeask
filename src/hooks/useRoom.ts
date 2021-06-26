@@ -36,7 +36,7 @@ type FirebaseQuestions = Record<
 >
 
 export function useRoom(roomId: string) {
-  const [questions, setQuestions] = useState<Questions[]>([])
+  const [questions, setQuestions] = useState<Questions[]>([] || null)
   const [title, setTitle] = useState('')
 
   const { user } = useAuth()
