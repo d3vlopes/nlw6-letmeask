@@ -10,5 +10,6 @@ export const theme = {
     primary: '#835afd',
     link: '#e559f9',
     card: '#fefefe',
+    content: '#29292e',
   },
 }

@@ -35,7 +35,7 @@ export const Wrapper = styled.div<WrapperProps>`
 
 export const Content = styled.p`
   ${({ theme }) => css`
-    color: ${theme.colors.text};
+    color: ${theme.colors.content};
   `}
 `
 

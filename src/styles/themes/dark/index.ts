@@ -10,5 +10,6 @@ export const dark = {
     primary: '#835afd',
     link: '#e559f9',
     card: '#17191b',
+    content: '#29292e',
   },
 }
